@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+     <style>
+    :root {
+      --main: #4BAD87;
+      --dark: #1F4737;
+      --darker: #132e23;
+      --light-main: #6fcba7;
+      --pale: #e8f7f2;
+      --white: #ffffff;
+      --gray: #8a9b93;
+      --card-bg: #ffffff;
+      --shadow: 0 8px 40px rgba(31, 71, 55, 0.12);
+      --shadow-hover: 0 20px 60px rgba(75, 173, 135, 0.25);
+    }
+ 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f4fbf8;
+      color: var(--dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+ 
+ 
+ 
+    /* ─── Page ─── */
+    .page {
+      position: relative;
+      width: 80%;
+      margin: 0 auto;
+      padding: 45px 24px  0;
+    }
+ 
+    /* ─── Hero title ─── */
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeUp .7s ease both;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--main), var(--dark));
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+        font-family: var(--sbold);
+    }
+    .hero h2 {
+      font-family: var(--bold);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      color: var(--darker);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h2 span {
+      background: linear-gradient(135deg, var(--main), var(--dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: var(--bold);
+    }
+    .hero p {
+      color: var(--gray);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.8;
+        font-family: var(--sbold);
+    }
+ 
+    /* ─── Filter Tabs ─── */
+    .filter-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 56px;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: 50px;
+      border: 2px solid transparent;
+      background: #fff;
+      color: var(--dark);
+      font-family: 'Cairo', sans-serif;
+      font-size: .92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .3s;
+      box-shadow: 0 2px 14px rgba(31,71,55,.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .filter-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--main), var(--dark));
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .filter-btn span { position: relative; z-index: 1;font-family: var(--sbold); }
+    .filter-btn .icon { position: relative; z-index: 1; font-size: 1.1rem; }
+    .filter-btn:hover { border-color: var(--main); transform: translateY(-2px); }
+    .filter-btn.active::before { opacity: 1; }
+    .filter-btn.active { 
+        color: #fff;
+    border-color: #fff;
+    box-shadow: 0 6px 20px rgba(75, 173, 135, .4);
+    transform: translateY(-2px);
+    border-width: 5px;
+    }
+ 
+    /* ─── Section Title ─── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .section-label .line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--main), transparent);
+      border-radius: 2px;
+    }
+    .section-label h2 {
+      font-family: var(--bold);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .section-label .emoji { font-size: 1.4rem; }
+ 
+    /* ─── Grid ─── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      margin-bottom: 72px;
+    }
+ 
+    /* ─── Card ─── */
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 30px 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s, box-shadow .35s;
+      animation: fadeUp .6s ease both;
+      border: 1.5px solid rgba(75,173,135,.1);
+      display: none;
+    }
+    .card.visible { display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+ 
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle at top right, rgba(75,173,135,.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .features-list li::before {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: var(--main);
+    color: #fff;
+    font-size: 12px;
+}
+ 
+    /* popular */
+    .card.popular {
+      background: linear-gradient(160deg, var(--dark) 0%, #163829 100%);
+      border-color: var(--main);
+      color: #fff;
+    }
+    .card.popular .pkg-title,
+    .card.popular .feature-item,
+    .card.popular .price-num { color: #fff; }
+    .card.popular .feature-item { color: rgba(255,255,255,.85); }
+    .card.popular .price-per { color: rgba(255,255,255,.6); }
+    .card.popular .pkg-desc { color: rgba(255,255,255,.65); }
+    .card.popular .card-divider { border-color: rgba(255,255,255,.15); }
+    .card.popular::before {
+      background: radial-gradient(circle at top right, rgba(75,173,135,.25), transparent 70%);
+    }
+ 
+    .popular-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, var(--main), #3d9b75);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      font-family: var(--bold);
+    }
+ 
+    .pkg-icon {
+      width: 54px; height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(75,173,135,.15), rgba(75,173,135,.05));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border: 1.5px solid rgba(75,173,135,.2);
+    }
+    .card.popular .pkg-icon {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.2);
+    }
+ 
+    .pkg-title {
+      font-family: var(--bold);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--darker);
+      margin-bottom: 8px;
+    }
+    .pkg-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-family: var(--sbold);
+    }
+ 
+    .price-block {
+      margin-bottom: 22px;
+    }
+    .price-num {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .price-num sup {
+      font-size: 1rem;
+      font-weight: 700;
+      vertical-align: super;
+      margin-left: 3px;
+    }
+    .price-per {
+      font-size: .82rem;
+      color: var(--gray);
+      margin-top: 4px;
+      font-family: var(--sbold);
+    }
+ 
+    .card-divider {
+      border: none;
+      border-top: 1.5px solid rgba(31,71,55,.08);
+      margin: 18px 0;
+    }
+ 
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .features-list li{
+        color: #000;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .9rem;
+      color: #3a5a4e;
+      line-height: 1.5;
+    }
+    .feature-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--main), var(--dark));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .check-img { width: 11px; height: 11px; filter: brightness(0) invert(1); }
+    .card.popular .feature-check {
+      background: rgba(255,255,255,.2);
+      border: 1.5px solid rgba(255,255,255,.4);
+    }
+ 
+    .cta-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 14px;
+      font-family: 'Cairo', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .3s;
+      text-decoration: none;
+    }
+    .cta-outline {
+      background: transparent;
+      border: 2px solid var(--main);
+      color: var(--dark);
+      font-family: var(--bold);
+    }
+    .cta-outline:hover {
+      background: var(--main);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(75,173,135,.35);
+    }
+    .cta-filled {
+      background: linear-gradient(135deg, var(--main), var(--dark));
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(75,173,135,.4);
+      font-family: var(--bold);
+    }
+    .cta-filled:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(75,173,135,.5);
+      filter: brightness(1.08);
+    }
+ 
+    /* ─── CTA Banner ─── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--dark) 0%, #163829 100%);
+      border-radius: 28px;
+      padding: 56px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(75,173,135,.3), transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(75,173,135,.2), transparent 70%);
+      bottom: -80px; left: -60px;
+      pointer-events: none;
+    }
+    .cta-banner h2 {
+      font-family: var(--bold);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 14px;
+      position: relative; z-index: 1;
+    }
+    .cta-banner p {
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+      margin-bottom: 32px;
+      position: relative; z-index: 1;
+      font-family: var(--sbold);
+    }
+    .cta-banner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--main);
+      color: #fff;
+      font-family: var(--bold);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 40px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .3s;
+      position: relative; z-index: 1;
+      box-shadow: 0 8px 28px rgba(75,173,135,.45);
+    }
+    .cta-banner-btn:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 12px 36px rgba(75,173,135,.55); }
+ 
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .page { padding: 48px 16px 80px; }
+      .filter-btn { font-size: .82rem; padding: 9px 18px; }
+      .cta-banner { padding: 40px 24px; }
+    }
+ 
+    /* stagger delays */
+    .card:nth-child(1) { animation-delay: .05s; }
+    .card:nth-child(2) { animation-delay: .12s; }
+    .card:nth-child(3) { animation-delay: .19s; }
+    .card:nth-child(4) { animation-delay: .26s; }
+    .card:nth-child(5) { animation-delay: .33s; }
+    .card:nth-child(6) { animation-delay: .40s; }
+  </style>
+</head>
+
+<body>
+
+     <div class="Header_Mobile">
+      <div class="Header_Mobile_Data">
+          <a href="index.html"> <img src="assets/images/Header/New Logo Colored 2.png" alt=""> </a>
+          <!-- ══ HAMBURGER BUTTON ══ -->
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navOverlay">
+    <img class="img-open"  src="assets/images/menu_open.png"  alt="فتح القائمة"  />
+    <img class="img-close" src="assets/images/menu_close.png" alt="إغلاق القائمة" />
+  </button>
+      </div>
+  </div>
+
+  <header>
+    <div class="Header_Content">
+      <div class="Logo">
+        <a href="index.html"> <img src="assets/images/Header/New Logo Colored 2.png" alt=""> </a>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about_us.html">من نحن</a></li>
+          <li><a href="services.html">خدماتنا</a></li>
+          <li><a href="projects.html">أعمالنا</a></li>
+          <li><a href="baka.html">الباقات</a></li>
+          <li><a href="Blog.html">المدونة</a></li>
+        </ul>
+      </nav>
+
+      <div class="Contatc">
+        <a href=""> تواصل معنا </a>
+        <img
+    class="open_side"
+    src="assets/images/Header/burger-menu_12748718 1.png"
+    alt="قائمة"
+    style="cursor:pointer;"
+    onclick="openSide()"
+  >
+      </div>
+    </div>
+  </header>
+
+
+
+    <section class="Page_title">
+        <div class="Page_title_content">
+            <h1> باقات تناسب كل احتياجاتك </h1>
+           <p>اختر الباقة المثالية لعملك وابدأ رحلتك نحو النجاح الرقمي</p>
+        </div>
+    </section>
+
+
+    <div class="page">
+ 
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">✦ خطط الأسعار</div>
+   <!-- <h2>باقات تناسب <span>كل احتياجاتك</span></h2>
+    <p>اختر الباقة المثالية لعملك وابدأ رحلتك نحو النجاح الرقمي</p>
+    -->
+  </div>
+ 
+  <!-- Filter -->
+  <div class="filter-wrap">
+    <button class="filter-btn active" data-filter="all" onclick="filterCards('all', this)">
+      <span class="icon">🧩</span><span>كل الباقات</span>
+    </button>
+    <button class="filter-btn" data-filter="social" onclick="filterCards('social', this)">
+      <span class="icon">📱</span><span>سوشيال ميديا</span>
+    </button>
+    <button class="filter-btn" data-filter="seo" onclick="filterCards('seo', this)">
+      <span class="icon">🔍</span><span>تحسين SEO</span>
+    </button>
+    <button class="filter-btn" data-filter="web" onclick="filterCards('web', this)">
+      <span class="icon">💻</span><span>تصميم وبرمجة</span>
+    </button>
+  </div>
+ 
+  <!-- ══ SOCIAL MEDIA ══ -->
+  <div class="section-label" id="sec-social" style="display:none">
+    <div class="line"></div>
+    <span class="emoji">📱</span>
+    <h2>باقات السوشيال ميديا</h2>
+    <div class="line" style="background:linear-gradient(270deg,var(--main),transparent)"></div>
+  </div>
+  <div class="grid" id="grid-social">
+ 
+    <div class="card" data-cat="social">
+      <div class="pkg-icon">📱</div>
+      <div class="pkg-title">الباقة الأساسية</div>
+      <div class="pkg-desc">مثالية للمشاريع الناشئة التي تريد حضوراً رقمياً قوياً</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>199</div>
+        <div class="price-per">شهرياً</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          إدارة منصتين (Facebook & Instagram)
+        </li>
+        <li class="feature-item">
+           
+          12 منشور شهرياً مع تصاميم احترافية
+        </li>
+        <li class="feature-item">
+           
+          تقرير أداء شهري
+        </li>
+        <li class="feature-item">
+           
+          الرد على التعليقات
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-outline">ابدأ الآن</a>
+    </div>
+ 
+    <div class="card popular" data-cat="social">
+      <div class="popular-badge">⭐ الأكثر طلباً</div>
+      <div class="pkg-icon">🚀</div>
+      <div class="pkg-title">الباقة الاحترافية</div>
+      <div class="pkg-desc">للشركات التي تسعى لنمو سريع وحضور واسع</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>399</div>
+        <div class="price-per">شهرياً</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          إدارة 4 منصات (FB, IG, X, LinkedIn)
+        </li>
+        <li class="feature-item">
+           
+          24 منشور شهرياً + ستوري يومي
+        </li>
+        <li class="feature-item">
+           
+          إعلانات مدفوعة (إدارة كاملة)
+        </li>
+        <li class="feature-item">
+           
+          تحليلات وتقارير أسبوعية
+        </li>
+        <li class="feature-item">
+           
+          مدير حساب مخصص
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-filled">ابدأ الآن</a>
+    </div>
+ 
+    <div class="card" data-cat="social">
+      <div class="pkg-icon">🏆</div>
+      <div class="pkg-title">الباقة المتكاملة</div>
+      <div class="pkg-desc">حل شامل للعلامات التجارية الكبيرة والمؤسسات</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>699</div>
+        <div class="price-per">شهرياً</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          جميع المنصات + TikTok & YouTube
+        </li>
+        <li class="feature-item">
+           
+          محتوى غير محدود + فيديو موشن
+        </li>
+        <li class="feature-item">
+           
+          استراتيجية محتوى كاملة
+        </li>
+        <li class="feature-item">
+           
+          فريق إبداعي متكامل
+        </li>
+        <li class="feature-item">
+           
+          دعم على مدار الساعة
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-outline">ابدأ الآن</a>
+    </div>
+ 
+  </div>
+ 
+  <!-- ══ SEO ══ -->
+  <div class="section-label" id="sec-seo" style="display:none">
+    <div class="line"></div>
+    <span class="emoji">🔍</span>
+    <h2>باقات تحسين SEO</h2>
+    <div class="line" style="background:linear-gradient(270deg,var(--main),transparent)"></div>
+  </div>
+  <div class="grid" id="grid-seo">
+ 
+    <div class="card" data-cat="seo">
+      <div class="pkg-icon">🔍</div>
+      <div class="pkg-title">SEO أساسي</div>
+      <div class="pkg-desc">للمواقع الجديدة التي تحتاج لأساس قوي في محركات البحث</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>249</div>
+        <div class="price-per">شهرياً</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          تحليل الكلمات المفتاحية (50 كلمة)
+        </li>
+        <li class="feature-item">
+           
+          تحسين On-Page لـ 10 صفحات
+        </li>
+        <li class="feature-item">
+           
+          تقرير ترتيب شهري
+        </li>
+        <li class="feature-item">
+           
+          إعداد Google Search Console
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-outline">ابدأ الآن</a>
+    </div>
+ 
+    <div class="card popular" data-cat="seo">
+      <div class="popular-badge">⭐ الأكثر طلباً</div>
+      <div class="pkg-icon">📈</div>
+      <div class="pkg-title">SEO متقدم</div>
+      <div class="pkg-desc">لتحقيق نتائج حقيقية والوصول لصدارة نتائج البحث</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>499</div>
+        <div class="price-per">شهرياً</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          بحث شامل (200+ كلمة مفتاحية)
+        </li>
+        <li class="feature-item">
+           
+          On-Page + Technical SEO كامل
+        </li>
+        <li class="feature-item">
+           
+          بناء روابط خارجية (Link Building)
+        </li>
+        <li class="feature-item">
+           
+          4 مقالات SEO شهرياً
+        </li>
+        <li class="feature-item">
+           
+          تقارير أسبوعية مفصلة
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-filled">ابدأ الآن</a>
+    </div>
+ 
+    <div class="card" data-cat="seo">
+      <div class="pkg-icon">💎</div>
+      <div class="pkg-title">SEO احترافي</div>
+      <div class="pkg-desc">حل متكامل للشركات التي تريد هيمنة كاملة على نتائج البحث</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>899</div>
+        <div class="price-per">شهرياً</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          استراتيجية SEO شاملة ومخصصة
+        </li>
+        <li class="feature-item">
+           
+          Local SEO + E-commerce SEO
+        </li>
+        <li class="feature-item">
+           
+          12 مقالة محسّنة شهرياً
+        </li>
+        <li class="feature-item">
+           
+          تحليل المنافسين + خطة نمو
+        </li>
+        <li class="feature-item">
+           
+          مستشار SEO مخصص
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-outline">ابدأ الآن</a>
+    </div>
+ 
+  </div>
+ 
+  <!-- ══ WEB ══ -->
+  <div class="section-label" id="sec-web" style="display:none">
+    <div class="line"></div>
+    <span class="emoji">💻</span>
+    <h2>باقات تصميم وبرمجة المواقع</h2>
+    <div class="line" style="background:linear-gradient(270deg,var(--main),transparent)"></div>
+  </div>
+  <div class="grid" id="grid-web">
+ 
+    <div class="card" data-cat="web">
+      <div class="pkg-icon">🌐</div>
+      <div class="pkg-title">موقع تعريفي</div>
+      <div class="pkg-desc">موقع احترافي يعرض هويتك ويقنع العملاء بخدماتك</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>599</div>
+        <div class="price-per">دفعة واحدة</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          تصميم يصل لـ 5 صفحات
+        </li>
+        <li class="feature-item">
+           
+          تصميم متجاوب (Responsive)
+        </li>
+        <li class="feature-item">
+           
+          نموذج تواصل + خريطة
+        </li>
+        <li class="feature-item">
+           
+          سرعة تحميل عالية
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-outline">طلب الباقة</a>
+    </div>
+ 
+    <div class="card popular" data-cat="web">
+      <div class="popular-badge">⭐ الأكثر طلباً</div>
+      <div class="pkg-icon">🛒</div>
+      <div class="pkg-title">متجر إلكتروني</div>
+      <div class="pkg-desc">متجر متكامل لبيع منتجاتك وتنمية أرباحك أونلاين</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>1,299</div>
+        <div class="price-per">دفعة واحدة</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          تصميم كامل + لوحة تحكم
+        </li>
+        <li class="feature-item">
+           
+          بوابات دفع إلكتروني
+        </li>
+        <li class="feature-item">
+           
+          إدارة المخزون والطلبات
+        </li>
+        <li class="feature-item">
+           
+          SSL + أمان كامل
+        </li>
+        <li class="feature-item">
+           
+          دعم تقني 3 أشهر مجاناً
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-filled">طلب الباقة</a>
+    </div>
+ 
+    <div class="card" data-cat="web">
+      <div class="pkg-icon">⚙️</div>
+      <div class="pkg-title">تطبيق ويب مخصص</div>
+      <div class="pkg-desc">برمجة حلول متكاملة مخصصة لعمليات شركتك</div>
+      <div class="price-block">
+        <div class="price-num"><sup>$</sup>2,999</div>
+        <div class="price-per">يبدأ من</div>
+      </div>
+      <hr class="card-divider" />
+      <ul class="features-list">
+        <li class="feature-item">
+           
+          تطوير Full-Stack مخصص
+        </li>
+        <li class="feature-item">
+           
+          API Integrations
+        </li>
+        <li class="feature-item">
+           
+          لوحة تحكم متكاملة
+        </li>
+        <li class="feature-item">
+           
+          استضافة على Cloud
+        </li>
+        <li class="feature-item">
+           
+          صيانة ودعم مستمر
+        </li>
+      </ul>
+      <a href="#" class="cta-btn cta-outline">تواصل معنا</a>
+    </div>
+ 
+  </div>
+ 
+  <!-- CTA Banner -->
+  <div class="cta-banner">
+    <h2>مش لاقي الباقة المناسبة؟</h2>
+    <p>تواصل معنا وسنصمم لك باقة مخصصة تناسب احتياجاتك وميزانيتك</p>
+    <a href="contact_us.html" class="cta-banner-btn">💬 تحدث مع خبير الآن</a>
+  </div>
+ 
+</div>
+
+    <!-- ══ CIRCLE REVEAL OVERLAY ══ -->
+  <nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <ul class="nav-list" role="list">
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+        
+          الرئيسية
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="about_us.html">
+         
+          من نحن
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="services.html">
+          
+          خدماتنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="projects.html">
+          
+          أعمالنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="baka.html">
+       
+            الباقات  
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="Blog.html">
+           المدونة
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="contact_us.html">
+          تواصل معنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+    </ul>
+  </nav>
+
+<footer class="ft-wrap">
+  <div class="ft-top">
+
+    <div class="ft-logo-col">
+      <div class="ft-logo">
+        <img src="assets/images/footer_logo.png" alt="Be Cloud Logo">
+      </div>
+    </div>
+
+     <div>
+      <div class="ft-nav-title">من نحن</div>
+      <a class="ft-nav-link" href="#">من نحن</a>
+      <a class="ft-nav-link" href="#">المدونة</a>
+      <a class="ft-nav-link" href="#">تواصل معنا</a>
+    </div>
+
+
+     <div>
+      <div class="ft-nav-title">الرئيسية</div>
+      <a class="ft-nav-link" href="#">الرئيسية</a>
+      <a class="ft-nav-link" href="#">خدماتنا</a>
+      <a class="ft-nav-link" href="#">سابقة اعمالنا</a>
+    </div>
+
+
+    <div class="ft-logo-col">
+      <p class="ft-desc">علامتك التجارية مش بس هتطور، لكنها هتوصل للعميل الصح في الوقت الصح، بخطط تسويقية مدروسة تحقق أفضل النتائج.</p>
+      <div class="ft-socials">
+        <a class="ft-social" href="#" aria-label="X"><img src="assets/images/Footer/6.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="TikTok"><img src="assets/images/Footer/5.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="YouTube"><img src="assets/images/Footer/4.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Instagram"><img src="assets/images/Footer/3.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Facebook"><img src="assets/images/Footer/2.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Snapchat"><img src="assets/images/Footer/1.png" alt=""></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft-bottom">
+    
+    <div class="ft-contact-items">
+      <div style="background-color: #fff;color:#000" class="ft-contact-pill">
+        <img src="assets/images/Footer/Email.png" alt="">
+        <span>info@beloud.com  </span>
+      </div>
+       <div class="ft-contact-pill">
+        <img src="assets/images/Footer/telephone (1).png" alt="">
+        <span>+ 000000000000 </span>
+      </div>
+      <div class="ft-contact-pill">
+        <img src="assets/images/Footer/Location.png" alt="">
+        <span>دولة - محافظة - شارع  </span>
+      </div>
+     
+      
+    </div>
+    <span class="ft-copy">copyright@becloud2025</span>
+  </div>
+</footer>
+
+
+
+<!-- ######################## Scripts #########################  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  function filterCards(filter, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+ 
+    const cats = ['social', 'seo', 'web'];
+ 
+    if (filter === 'all') {
+      cats.forEach(cat => {
+        document.getElementById('sec-' + cat).style.display = 'none';
+        const grid = document.getElementById('grid-' + cat);
+        grid.querySelectorAll('.card').forEach(c => c.classList.add('visible'));
+      });
+    } else {
+      cats.forEach(cat => {
+        const sec = document.getElementById('sec-' + cat);
+        const grid = document.getElementById('grid-' + cat);
+        if (cat === filter) {
+          sec.style.display = 'flex';
+          grid.querySelectorAll('.card').forEach(c => {
+            c.classList.add('visible');
+            // reset animation
+            c.style.animation = 'none';
+            c.offsetHeight;
+            c.style.animation = '';
+          });
+        } else {
+          sec.style.display = 'none';
+          grid.querySelectorAll('.card').forEach(c => c.classList.remove('visible'));
+        }
+      });
+    }
+  }
+ 
+  // init: show all
+  document.querySelectorAll('.card').forEach(c => c.classList.add('visible'));
+</script>
+
+ <script>
+    const toggle   = document.getElementById('menuToggle');
+    const overlay  = document.getElementById('navOverlay');
+    let isOpen     = false;
+ 
+    /* ── حساب مركز الزرار بالنسبة للـ viewport ── */
+    function updateOrigin() {
+      const rect = toggle.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      overlay.style.setProperty('--cx', cx + 'px');
+      overlay.style.setProperty('--cy', cy + 'px');
+    }
+ 
+    /* ── فتح / إغلاق ── */
+    function openMenu() {
+      updateOrigin();
+      isOpen = true;
+      toggle.classList.add('is-open');
+      overlay.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      overlay.setAttribute('aria-hidden',  'false');
+      document.body.style.overflow = 'hidden';   /* منع scroll الخلفية */
+    }
+ 
+    function closeMenu() {
+      isOpen = false;
+      toggle.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      overlay.setAttribute('aria-hidden',  'true');
+      document.body.style.overflow = '';
+    }
+ 
+    toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+ 
+    /* ── ESC للإغلاق ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && isOpen) closeMenu();
+    });
+ 
+    /* ── لو حجم الشاشة اتغير → حدّث المركز ── */
+    window.addEventListener('resize', () => {
+      if (isOpen) updateOrigin();
+    });
+ 
+    /* ── اضغط خارج القائمة للإغلاق ── */
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeMenu();
+    });
+  </script>
+  
+</body>
+</html>

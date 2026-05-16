@@ -1,0 +1,60 @@
+<svg viewBox="0 0 124 384" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<defs><clipPath id="c3"><rect x="0" y="0" width="124" height="384" rx="14"/></clipPath></defs>
+<g clip-path="url(#c3)">
+  <rect x="0" y="0" width="124" height="384" fill="#fafafa"/>
+  <rect x="0" y="0" width="124" height="50" fill="white"/>
+  <text x="62" y="20" text-anchor="middle" font-size="9" fill="#111" font-weight="bold" font-family="Arial">ShopNow</text>
+  <text x="62" y="32" text-anchor="middle" font-size="6" fill="#888" font-family="Arial">Fashion &amp; Lifestyle</text>
+  <rect x="8" y="38" width="108" height="16" rx="8" fill="#f0f0f0"/>
+  <text x="28" y="49" font-size="7" fill="#bbb" font-family="Arial">🔍 Search products...</text>
+  <rect x="8" y="60" width="108" height="56" rx="10" fill="#7C4DFF"/>
+  <text x="18" y="78" font-size="7" fill="white" font-weight="bold" font-family="Arial">Summer Sale</text>
+  <text x="18" y="89" font-size="12" fill="#FFD740" font-weight="bold" font-family="Arial">30% OFF</text>
+  <rect x="18" y="96" width="34" height="12" rx="6" fill="white"/>
+  <text x="35" y="105" text-anchor="middle" font-size="5.5" fill="#7C4DFF" font-weight="bold" font-family="Arial">Shop Now</text>
+  <text x="102" y="95" text-anchor="middle" font-size="26" font-family="Arial">👗</text>
+  <text x="8" y="130" font-size="7" fill="#111" font-weight="bold" font-family="Arial">Categories</text>
+  <rect x="8" y="135" width="28" height="13" rx="6.5" fill="#7C4DFF"/>
+  <text x="22" y="144" text-anchor="middle" font-size="5.5" fill="white" font-family="Arial">All</text>
+  <rect x="40" y="135" width="30" height="13" rx="6.5" fill="#f0f0f0"/>
+  <text x="55" y="144" text-anchor="middle" font-size="5.5" fill="#555" font-family="Arial">Women</text>
+  <rect x="74" y="135" width="26" height="13" rx="6.5" fill="#f0f0f0"/>
+  <text x="87" y="144" text-anchor="middle" font-size="5.5" fill="#555" font-family="Arial">Men</text>
+  <rect x="104" y="135" width="26" height="13" rx="6.5" fill="#f0f0f0"/>
+  <text x="117" y="144" text-anchor="middle" font-size="5.5" fill="#555" font-family="Arial">Kids</text>
+  <rect x="8" y="154" width="52" height="70" rx="8" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="8" y="154" width="52" height="44" rx="8" fill="#EDE7F6"/>
+  <text x="34" y="182" text-anchor="middle" font-size="22" font-family="Arial">👠</text>
+  <text x="34" y="210" text-anchor="middle" font-size="6" fill="#111" font-weight="bold" font-family="Arial">Heels</text>
+  <text x="34" y="219" text-anchor="middle" font-size="6" fill="#7C4DFF" font-family="Arial">EGP 420</text>
+  <rect x="64" y="154" width="52" height="70" rx="8" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="64" y="154" width="52" height="44" rx="8" fill="#FFF3E0"/>
+  <text x="90" y="182" text-anchor="middle" font-size="22" font-family="Arial">👜</text>
+  <text x="90" y="210" text-anchor="middle" font-size="6" fill="#111" font-weight="bold" font-family="Arial">Handbag</text>
+  <text x="90" y="219" text-anchor="middle" font-size="6" fill="#7C4DFF" font-family="Arial">EGP 890</text>
+  <rect x="8" y="230" width="52" height="70" rx="8" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="8" y="230" width="52" height="44" rx="8" fill="#E8F5E9"/>
+  <text x="34" y="258" text-anchor="middle" font-size="22" font-family="Arial">👒</text>
+  <text x="34" y="286" text-anchor="middle" font-size="6" fill="#111" font-weight="bold" font-family="Arial">Hat</text>
+  <text x="34" y="295" text-anchor="middle" font-size="6" fill="#7C4DFF" font-family="Arial">EGP 210</text>
+  <rect x="64" y="230" width="52" height="70" rx="8" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="64" y="230" width="52" height="44" rx="8" fill="#FCE4EC"/>
+  <text x="90" y="258" text-anchor="middle" font-size="22" font-family="Arial">💍</text>
+  <text x="90" y="286" text-anchor="middle" font-size="6" fill="#111" font-weight="bold" font-family="Arial">Jewelry</text>
+  <text x="90" y="295" text-anchor="middle" font-size="6" fill="#7C4DFF" font-family="Arial">EGP 650</text>
+  <rect x="8" y="306" width="52" height="70" rx="8" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="8" y="306" width="52" height="44" rx="8" fill="#E3F2FD"/>
+  <text x="34" y="334" text-anchor="middle" font-size="22" font-family="Arial">👟</text>
+  <text x="34" y="362" text-anchor="middle" font-size="6" fill="#111" font-weight="bold" font-family="Arial">Sneakers</text>
+  <rect x="64" y="306" width="52" height="70" rx="8" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <rect x="64" y="306" width="52" height="44" rx="8" fill="#FFF8E1"/>
+  <text x="90" y="334" text-anchor="middle" font-size="22" font-family="Arial">🧣</text>
+  <text x="90" y="362" text-anchor="middle" font-size="6" fill="#111" font-weight="bold" font-family="Arial">Scarf</text>
+  <rect x="0" y="352" width="124" height="32" fill="white" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="23" y="372" text-anchor="middle" font-size="13" font-family="Arial">🏠</text>
+  <text x="50" y="372" text-anchor="middle" font-size="13" font-family="Arial">🔍</text>
+  <text x="77" y="372" text-anchor="middle" font-size="13" font-family="Arial">🛒</text>
+  <text x="104" y="372" text-anchor="middle" font-size="13" font-family="Arial">❤️</text>
+  <rect x="17" y="378" width="12" height="3" rx="1.5" fill="#7C4DFF"/>
+</g>
+</svg>

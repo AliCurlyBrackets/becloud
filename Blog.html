@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#4BAD87;
+  --brand-dark:#1F4737;
+  --brand-light:#e8f8f3;
+  --text-dark:#1a1a2e;
+  --text-mid:#444;
+  --text-light:#777;
+  --border:#e8e8e8;
+  --bg-light:#f7f7f7;
+  --white:#fff;
+  --shadow:0 2px 14px rgba(0,0,0,0.07);
+  --bold : bold;
+        --sbold : sbold;
+        --med : med;
+}
+
+
+/* HEADER */
+.hdr{background:var(--white);border-bottom:1px solid var(--border);padding:0 5%;}
+.hdr-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.logo{font-size:22px;font-weight:700;color:var(--brand);letter-spacing:-0.5px;}
+.logo span{color:var(--brand-dark);}
+nav ul{display:flex;gap:20px;list-style:none;}
+nav ul li a{font-size:13px;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .2s;}
+nav ul li a:hover{color:var(--brand);}
+.hdr-cta a{background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;font-size:13px;font-weight:700;padding:9px 22px;border-radius:8px;text-decoration:none;}
+
+/* PAGE HERO */
+.page-hero{background:linear-gradient(135deg,var(--brand-dark) 0%,#2d6b52 50%,var(--brand) 100%);padding:52px 5%;text-align:center;color:#fff;}
+.page-hero h1{font-size:32px;font-weight:700;margin-bottom:10px;}
+.page-hero p{font-size:14px;opacity:.85;max-width:480px;margin:0 auto;line-height:1.8;}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--white);border-bottom:1px solid var(--border);padding:10px 5%;}
+.breadcrumb .bc-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-light);}
+.breadcrumb a{color:var(--text-light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--brand);}
+.breadcrumb .sep{color:#ccc;font-size:11px;}
+.breadcrumb .cur{color:var(--brand);font-weight:700;}
+
+/* CAT FILTER */
+.cat-bar{width:90%;max-width:1200px;margin:28px auto 0;overflow-x:auto;scrollbar-width:none;}
+.cat-bar::-webkit-scrollbar{display:none;}
+.cat-inner{display:flex;gap:10px;padding-bottom:12px;border-bottom:2px solid var(--border);flex-wrap:nowrap;}
+.cat-btn{padding:7px 20px;border-radius:30px;font-family:var(--sbold);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;border:1.5px solid var(--border);color:var(--text-mid);background:var(--white);transition:all .2s;}
+.cat-btn:hover{border-color:var(--brand);color:var(--brand);}
+.cat-btn.active{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+/* LAYOUT */
+.wrap{width:90%;max-width:1200px;margin:36px auto 60px;display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;}
+
+/* HERO CARD */
+.hero-card{display:grid;grid-template-columns:1fr 1fr;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:28px;background:var(--white);min-height:280px;}
+.hero-img{position:relative;overflow:hidden;}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.hero-card:hover .hero-img img{transform:scale(1.04);}
+.date-badge{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:5px;direction:ltr;}
+.hero-content{padding:28px 24px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.cat-tag{display:inline-block;background:var(--brand);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px;text-decoration:none;width:fit-content;}
+.hero-content h2{font-size:20px;font-weight:700;color:var(--text-dark);line-height:1.6;text-align:right;font-family: var(--bold);}
+.hero-content p{font-size:13.5px;color:var(--text-mid);line-height:1.85;text-align:right;font-family: var(--sbold);}
+.read-more{font-family:var(--sbold);display:inline-block;border:1.5px solid var(--brand);color:var(--brand);font-weight:700;font-size:13px;padding:8px 22px;border-radius:6px;text-decoration:none;width:fit-content;transition:all .2s;}
+.read-more:hover{background:var(--brand);color:#fff;}
+
+/* GRID */
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.post-card{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform .25s,box-shadow .25s;position:relative;}
+.post-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.11);}
+.card-img{position:relative;overflow:hidden;height:180px;}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.post-card:hover .card-img img{transform:scale(1.05);}
+.card-date{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;padding:3px 9px;border-radius:20px;display:flex;align-items:center;gap:4px;direction:ltr;}
+.card-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;}
+.card-body h3{font-size:14.5px;font-weight:700;color:var(--text-dark);line-height:1.6;text-align:right; font-family: var(--bold);}
+.card-body p{font-size:12.5px;color:var(--text-light);line-height:1.75;text-align:right;font-family: var(--sbold);}
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 14px;border-top:1px solid var(--border);}
+.card-cat{font-size:11px;font-weight:700;color:var(--brand);text-decoration:none;font-family: var(--med);}
+.card-link{font-size:12px;font-weight:700;color:var(--brand);text-decoration:none;display:flex;align-items:center;gap:4px;font-family: med;}
+
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:24px;position:sticky;top:20px;}
+.sbox{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);}
+.sbox-title{background:var(--brand);color:#fff;font-size:14px;font-weight:700;padding:12px 18px;text-align:right;font-family: var(--bold);}
+.sbox-body{padding:16px;}
+.search-form{display:flex;gap:8px;}
+.search-form input{flex:1;border:1px solid var(--border);border-radius:6px;padding:9px 12px;font-family:'Cairo',sans-serif;font-size:13px;color:var(--text-dark);outline:none;text-align:right;background:var(--bg-light);transition:border-color .2s;}
+.search-form input:focus{border-color:var(--brand);background:#fff;}
+.search-form button{background:var(--brand);color:#fff;border:none;border-radius:6px;padding:9px 16px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s;}
+.search-form button:hover{background:var(--brand-dark);}
+.s-list{list-style:none;}
+.s-list li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);}
+.s-list li:last-child{border-bottom:none;padding-bottom:0;}
+.s-list li img{width:64px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0;}
+.s-list .pi{display:flex;flex-direction:column;gap:4px;}
+.s-list .pi a{font-size:12.5px;font-weight:700;color:var(--text-dark);text-decoration:none;line-height:1.5;font-family: var(--sbold);}
+.s-list .pi a:hover{color:var(--brand);}
+.s-list .pm{font-size:11px;color:var(--text-light);display:flex;align-items:center;gap:4px;}
+.s-list .cc{color:var(--brand);font-weight:700;}
+
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;}
+  .hero-card{grid-template-columns:1fr;}
+  .hero-img{height:220px;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .posts-grid{grid-template-columns:1fr;}
+  nav ul{display:none;}
+  .ft-top{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+    <div class="Header_Mobile">
+      <div class="Header_Mobile_Data">
+          <a href="index.html"> <img src="assets/images/Header/New Logo Colored 2.png" alt=""> </a>
+          <!-- ══ HAMBURGER BUTTON ══ -->
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navOverlay">
+    <img class="img-open"  src="assets/images/menu_open.png"  alt="فتح القائمة"  />
+    <img class="img-close" src="assets/images/menu_close.png" alt="إغلاق القائمة" />
+  </button>
+      </div>
+  </div>
+
+  <header>
+    <div class="Header_Content">
+      <div class="Logo">
+        <a href="index.html"> <img src="assets/images/Header/New Logo Colored 2.png" alt=""> </a>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about_us.html">من نحن</a></li>
+          <li><a href="services.html">خدماتنا</a></li>
+          <li><a href="projects.html">أعمالنا</a></li>
+          <li><a href="baka.html">الباقات</a></li>
+          <li><a href="Blog.html">المدونة</a></li>
+        </ul>
+      </nav>
+
+      <div class="Contatc">
+        <a href=""> تواصل معنا </a>
+        <img
+    class="open_side"
+    src="assets/images/Header/burger-menu_12748718 1.png"
+    alt="قائمة"
+    style="cursor:pointer;"
+    onclick="openSide()"
+  >
+      </div>
+    </div>
+  </header>
+
+
+
+
+    <section class="Page_title">
+        <div class="Page_title_content">
+            <h1> المدونة </h1>
+            <p>اكتشف كيف قمنا بتحويل رؤى عملائنا إلى واقع ملموس من خلال مشاريعنا الناجحة.</p>
+        </div>
+    </section>
+
+
+
+   
+    <!-- Category Filter -->
+<div class="cat-bar">
+  <div class="cat-inner">
+    <a href="#" class="cat-btn active">الكل</a>
+    <a href="#" class="cat-btn">تصميم مواقع</a>
+    <a href="#" class="cat-btn">تسويق رقمي</a>
+    <a href="#" class="cat-btn">هوية بصرية</a>
+    <a href="#" class="cat-btn">تطوير تطبيقات</a>
+    <a href="#" class="cat-btn">SEO</a>
+  </div>
+</div>
+
+<!-- Main Wrap -->
+<div class="wrap">
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- Hero Card -->
+    <a href="single_blog.html">
+      <div class="hero-card">
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="مقال مميز">
+        <div class="date-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Nov 12 2025
+        </div>
+      </div>
+      <div class="hero-content">
+        <a href="#" class="cat-tag">تصميم مواقع</a>
+        <h2>أفضل شركات تصميم مواقع الكترونية في الكويت 2025 – بي كلاود</h2>
+        <p>المواقع الإلكترونية هي الواجهة الأساسية لأي نشاط تجاري يسعى للنجاح في العصر الرقمي. اكتشف كيف تختار الشريك المناسب...</p>
+        <a href="single_blog.html" class="read-more">المزيد</a>
+      </div>
+    </div>
+    </a>
+
+    <!-- Posts Grid -->
+    <div class="posts-grid">
+
+      <div class="post-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="">
+          <div class="card-date">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Nov 12 2025
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>كيف تبني هوية بصرية قوية لعلامتك التجارية</h3>
+          <p>الهوية البصرية هي أول ما يراه العميل. تعرّف على أهم عناصرها...</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="card-cat">هوية بصرية</a>
+          <a href="#" class="card-link">اقرأ المزيد ←</a>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=600&q=80" alt="">
+          <div class="card-date">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Oct 28 2025
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>أهمية السيو في تحسين ظهور موقعك على جوجل</h3>
+          <p>تحسين محركات البحث هو الطريق الأمثل لزيادة الزيارات العضوية...</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="card-cat">SEO</a>
+          <a href="#" class="card-link">اقرأ المزيد ←</a>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="">
+          <div class="card-date">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Oct 15 2025
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>استراتيجيات التسويق الرقمي الأكثر فاعلية في 2025</h3>
+          <p>تعرّف على أحدث الاستراتيجيات التي تحقق أعلى معدلات التحويل...</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="card-cat">تسويق رقمي</a>
+          <a href="#" class="card-link">اقرأ المزيد ←</a>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="">
+          <div class="card-date">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Sep 30 2025
+          </div>
+        </div>
+        <div class="card-body">
+          <h3>تطوير تطبيقات الجوال: ما الفرق بين iOS و Android؟</h3>
+          <p>قبل أن تبدأ مشروعك التقني، افهم الفروق الجوهرية بين المنصتين...</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="card-cat">تطوير تطبيقات</a>
+          <a href="#" class="card-link">اقرأ المزيد ←</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sbox">
+      <div class="sbox-title">البحث في المدونة</div>
+      <div class="sbox-body">
+        <div class="search-form">
+          <input type="text" placeholder="ابحث عن مقال...">
+          <button>بحث</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sbox">
+      <div class="sbox-title">أفضل المقالات</div>
+      <div class="sbox-body">
+        <ul class="s-list">
+          <li>
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=100&q=80" alt="">
+            <div class="pi">
+              <a href="#">أفضل شركات تصميم مواقع الكترونية في الكويت 2025</a>
+              <div class="pm"><span class="cc">24</span><span>تعليق</span></div>
+            </div>
+          </li>
+          <li>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=100&q=80" alt="">
+            <div class="pi">
+              <a href="#">كيف تبني هوية بصرية قوية لعلامتك التجارية</a>
+              <div class="pm"><span class="cc">18</span><span>تعليق</span></div>
+            </div>
+          </li>
+          <li>
+            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=100&q=80" alt="">
+            <div class="pi">
+              <a href="#">أهمية السيو في تحسين ظهور موقعك على جوجل</a>
+              <div class="pm"><span class="cc">12</span><span>تعليق</span></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sbox">
+      <div class="sbox-title">أحدث المقالات</div>
+      <div class="sbox-body">
+        <ul class="s-list">
+          <li>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=100&q=80" alt="">
+            <div class="pi">
+              <a href="#">استراتيجيات التسويق الرقمي الأكثر فاعلية</a>
+              <div class="pm"><span>15 أكتوبر 2025</span></div>
+            </div>
+          </li>
+          <li>
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=100&q=80" alt="">
+            <div class="pi">
+              <a href="#">تطوير تطبيقات الجوال: iOS vs Android</a>
+              <div class="pm"><span>30 سبتمبر 2025</span></div>
+            </div>
+          </li>
+          <li>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=100&q=80" alt="">
+            <div class="pi">
+              <a href="#">مستقبل التجارة الإلكترونية في الخليج</a>
+              <div class="pm"><span>10 سبتمبر 2025</span></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+  
+
+<!-- ══ CIRCLE REVEAL OVERLAY ══ -->
+  <nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <ul class="nav-list" role="list">
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+        
+          الرئيسية
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="about_us.html">
+         
+          من نحن
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="services.html">
+          
+          خدماتنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="projects.html">
+          
+          أعمالنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="baka.html">
+       
+            الباقات  
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="Blog.html">
+           المدونة
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="contact_us.html">
+          تواصل معنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+    </ul>
+  </nav>
+
+
+    
+<footer class="ft-wrap">
+  <div class="ft-top">
+
+    <div class="ft-logo-col">
+      <div class="ft-logo">
+        <img src="assets/images/footer_logo.png" alt="Be Cloud Logo">
+      </div>
+    </div>
+
+     <div>
+      <div class="ft-nav-title">من نحن</div>
+      <a class="ft-nav-link" href="#">من نحن</a>
+      <a class="ft-nav-link" href="#">المدونة</a>
+      <a class="ft-nav-link" href="#">تواصل معنا</a>
+    </div>
+
+
+     <div>
+      <div class="ft-nav-title">الرئيسية</div>
+      <a class="ft-nav-link" href="#">الرئيسية</a>
+      <a class="ft-nav-link" href="#">خدماتنا</a>
+      <a class="ft-nav-link" href="#">سابقة اعمالنا</a>
+    </div>
+
+
+    <div class="ft-logo-col">
+      <p class="ft-desc">علامتك التجارية مش بس هتطور، لكنها هتوصل للعميل الصح في الوقت الصح، بخطط تسويقية مدروسة تحقق أفضل النتائج.</p>
+      <div class="ft-socials">
+        <a class="ft-social" href="#" aria-label="X"><img src="assets/images/Footer/6.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="TikTok"><img src="assets/images/Footer/5.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="YouTube"><img src="assets/images/Footer/4.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Instagram"><img src="assets/images/Footer/3.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Facebook"><img src="assets/images/Footer/2.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Snapchat"><img src="assets/images/Footer/1.png" alt=""></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft-bottom">
+    
+    <div class="ft-contact-items">
+      <div style="background-color: #fff;color:#000" class="ft-contact-pill">
+        <img src="assets/images/Footer/Email.png" alt="">
+        <span>info@beloud.com  </span>
+      </div>
+       <div class="ft-contact-pill">
+        <img src="assets/images/Footer/telephone (1).png" alt="">
+        <span>+ 000000000000 </span>
+      </div>
+      <div class="ft-contact-pill">
+        <img src="assets/images/Footer/Location.png" alt="">
+        <span>دولة - محافظة - شارع  </span>
+      </div>
+     
+      
+    </div>
+    <span class="ft-copy">copyright@becloud2025</span>
+  </div>
+</footer>
+
+
+
+<!-- ######################## Scripts #########################  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+
+ <script>
+    const toggle   = document.getElementById('menuToggle');
+    const overlay  = document.getElementById('navOverlay');
+    let isOpen     = false;
+ 
+    /* ── حساب مركز الزرار بالنسبة للـ viewport ── */
+    function updateOrigin() {
+      const rect = toggle.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      overlay.style.setProperty('--cx', cx + 'px');
+      overlay.style.setProperty('--cy', cy + 'px');
+    }
+ 
+    /* ── فتح / إغلاق ── */
+    function openMenu() {
+      updateOrigin();
+      isOpen = true;
+      toggle.classList.add('is-open');
+      overlay.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      overlay.setAttribute('aria-hidden',  'false');
+      document.body.style.overflow = 'hidden';   /* منع scroll الخلفية */
+    }
+ 
+    function closeMenu() {
+      isOpen = false;
+      toggle.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      overlay.setAttribute('aria-hidden',  'true');
+      document.body.style.overflow = '';
+    }
+ 
+    toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+ 
+    /* ── ESC للإغلاق ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && isOpen) closeMenu();
+    });
+ 
+    /* ── لو حجم الشاشة اتغير → حدّث المركز ── */
+    window.addEventListener('resize', () => {
+      if (isOpen) updateOrigin();
+    });
+ 
+    /* ── اضغط خارج القائمة للإغلاق ── */
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeMenu();
+    });
+  </script>
+
+</body>
+</html>

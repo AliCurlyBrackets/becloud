@@ -1,0 +1,51 @@
+<svg viewBox="0 0 124 384" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+<defs><clipPath id="c2"><rect x="0" y="0" width="124" height="384" rx="14"/></clipPath></defs>
+<g clip-path="url(#c2)">
+  <rect x="0" y="0" width="124" height="384" fill="#0d1117"/>
+  <text x="12" y="20" font-size="7" fill="#aaa" font-family="Arial">Good morning 👋</text>
+  <text x="12" y="34" font-size="9" fill="white" font-weight="bold" font-family="Arial">Ahmed</text>
+  <circle cx="108" cy="22" r="12" fill="#1e2a1e"/>
+  <text x="108" y="26" text-anchor="middle" font-size="12" font-family="Arial">🔔</text>
+  <circle cx="62" cy="100" r="42" fill="none" stroke="#1e2a1e" stroke-width="10"/>
+  <circle cx="62" cy="100" r="42" fill="none" stroke="#00E676" stroke-width="10" stroke-dasharray="184 80" stroke-dashoffset="60" stroke-linecap="round"/>
+  <text x="62" y="96" text-anchor="middle" font-size="11" fill="white" font-weight="bold" font-family="Arial">2,840</text>
+  <text x="62" y="108" text-anchor="middle" font-size="6" fill="#aaa" font-family="Arial">/ 5000 steps</text>
+  <text x="62" y="118" text-anchor="middle" font-size="8" font-family="Arial">🔥</text>
+  <rect x="8" y="152" width="30" height="30" rx="6" fill="#1a2a1a"/>
+  <text x="23" y="169" text-anchor="middle" font-size="8" fill="#00E676" font-weight="bold" font-family="Arial">320</text>
+  <text x="23" y="178" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">kcal</text>
+  <rect x="46" y="152" width="30" height="30" rx="6" fill="#1a1a2a"/>
+  <text x="61" y="169" text-anchor="middle" font-size="8" fill="#40C4FF" font-weight="bold" font-family="Arial">2.4</text>
+  <text x="61" y="178" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">km</text>
+  <rect x="84" y="152" width="30" height="30" rx="6" fill="#2a1a1a"/>
+  <text x="99" y="169" text-anchor="middle" font-size="8" fill="#FF7043" font-weight="bold" font-family="Arial">38</text>
+  <text x="99" y="178" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">min</text>
+  <text x="9" y="195" font-size="7" fill="white" font-weight="bold" font-family="Arial">Today&#39;s Plan</text>
+  <rect x="8" y="200" width="108" height="30" rx="8" fill="#1a2a1a"/>
+  <rect x="8" y="200" width="30" height="30" rx="8" fill="#00E676" opacity="0.3"/>
+  <text x="23" y="219" text-anchor="middle" font-size="14" font-family="Arial">🏃</text>
+  <text x="46" y="212" font-size="6.5" fill="white" font-weight="bold" font-family="Arial">Morning Run</text>
+  <text x="46" y="223" font-size="5.5" fill="#aaa" font-family="Arial">30 min · 300 kcal</text>
+  <rect x="8" y="236" width="108" height="30" rx="8" fill="#1a1a2a"/>
+  <rect x="8" y="236" width="30" height="30" rx="8" fill="#40C4FF" opacity="0.3"/>
+  <text x="23" y="255" text-anchor="middle" font-size="14" font-family="Arial">💪</text>
+  <text x="46" y="248" font-size="6.5" fill="white" font-weight="bold" font-family="Arial">Upper Body</text>
+  <text x="46" y="259" font-size="5.5" fill="#aaa" font-family="Arial">45 min · 420 kcal</text>
+  <rect x="8" y="272" width="108" height="30" rx="8" fill="#2a1a1a"/>
+  <rect x="8" y="272" width="30" height="30" rx="8" fill="#FF7043" opacity="0.3"/>
+  <text x="23" y="291" text-anchor="middle" font-size="14" font-family="Arial">🧘</text>
+  <text x="46" y="284" font-size="6.5" fill="white" font-weight="bold" font-family="Arial">Yoga &amp; Stretch</text>
+  <text x="46" y="295" font-size="5.5" fill="#aaa" font-family="Arial">20 min · 120 kcal</text>
+  <rect x="8" y="308" width="108" height="30" rx="8" fill="#1a2a1a"/>
+  <rect x="8" y="308" width="30" height="30" rx="8" fill="#AB47BC" opacity="0.3"/>
+  <text x="23" y="327" text-anchor="middle" font-size="14" font-family="Arial">🚴</text>
+  <text x="46" y="320" font-size="6.5" fill="white" font-weight="bold" font-family="Arial">Cycling</text>
+  <text x="46" y="331" font-size="5.5" fill="#aaa" font-family="Arial">60 min · 500 kcal</text>
+  <rect x="0" y="352" width="124" height="32" fill="#0d1117"/>
+  <text x="23" y="372" text-anchor="middle" font-size="13" font-family="Arial">🏠</text>
+  <text x="50" y="372" text-anchor="middle" font-size="13" font-family="Arial">📊</text>
+  <text x="77" y="372" text-anchor="middle" font-size="13" font-family="Arial">➕</text>
+  <text x="104" y="372" text-anchor="middle" font-size="13" font-family="Arial">👤</text>
+  <rect x="17" y="378" width="12" height="3" rx="1.5" fill="#00E676"/>
+</g>
+</svg>

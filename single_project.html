@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+          /* ═══════════════════════
+     SHARED SLIDE IMG
+  ═══════════════════════ */
+  .slide-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    pointer-events: none;
+  }
+ 
+  .slide-img.active { display: block; }
+ 
+  /* ═══════════════════════
+     SLIDER CONTROLS
+  ═══════════════════════ */
+  .slider-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+  }
+ 
+  .slider-track-wrap {
+    width: 100%;
+    position: relative;
+  }
+ 
+  .slider-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+ 
+  .slider-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2e7d4f, #3aaa7a);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+ 
+  input[type=range].main-slider {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+  }
+ 
+  .slider-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+ 
+  .s-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+ 
+  .s-dot.active {
+    background: #2e7d4f;
+    transform: scale(1.3);
+  }
+ 
+  .slider-btns {
+    display: flex;
+    gap: 10px;
+  }
+ 
+  .s-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid #ddd;
+    background: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    color: #333;
+    font-family: var(--font-main);
+  }
+ 
+  .s-btn:hover {
+    background: #2e7d4f;
+    border-color: #2e7d4f;
+    color: #fff;
+  }
+ 
+  .slide-counter {
+    font-size: 13px;
+    font-weight: var(--sbold);
+    color: #888;
+    font-family: var(--font-main);
+  }
+ 
+  /* ─── UPLOAD HINT ─── */
+  .upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    font-size: 12px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    background: #fff;
+    transition: border-color 0.2s;
+  }
+ 
+  .upload-area:hover { border-color: #2e7d4f; color: #2e7d4f; }
+ 
+  input[type=file]#imgUpload { display: none; }
+ 
+  /* placeholder in screen */
+  .screen-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 10px;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 1.4;
+  }
+ 
+  @media (max-width: 640px) {
+    .devices-stage { height: 300px; }
+    .device-desktop { width: 340px; }
+    .device-laptop { width: 180px; right: -10px; }
+    .device-tablet { width: 80px; }
+    .device-phone  { width: 50px; left: 70px; }
+  }
+
+    </style>
+</head>
+
+<body>
+ <div class="Header_Mobile">
+      <div class="Header_Mobile_Data">
+          <a href="index.html"> <img src="assets/images/Header/New Logo Colored 2.png" alt=""> </a>
+          <!-- ══ HAMBURGER BUTTON ══ -->
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navOverlay">
+    <img class="img-open"  src="assets/images/menu_open.png"  alt="فتح القائمة"  />
+    <img class="img-close" src="assets/images/menu_close.png" alt="إغلاق القائمة" />
+  </button>
+      </div>
+  </div>
+
+  <header>
+    <div class="Header_Content">
+      <div class="Logo">
+        <a href="index.html"> <img src="assets/images/Header/New Logo Colored 2.png" alt=""> </a>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="about_us.html">من نحن</a></li>
+          <li><a href="services.html">خدماتنا</a></li>
+          <li><a href="projects.html">أعمالنا</a></li>
+          <li><a href="baka.html">الباقات</a></li>
+          <li><a href="Blog.html">المدونة</a></li>
+        </ul>
+      </nav>
+
+      <div class="Contatc">
+        <a href=""> تواصل معنا </a>
+        <img
+    class="open_side"
+    src="assets/images/Header/burger-menu_12748718 1.png"
+    alt="قائمة"
+    style="cursor:pointer;"
+    onclick="openSide()"
+  >
+      </div>
+    </div>
+  </header>
+
+
+
+
+    <section class="Page_title">
+        <div class="Page_title_content">
+            <h1> حجوزاتي </h1>
+            <p>اكتشف كيف قمنا بتحويل رؤى عملائنا إلى واقع ملموس من خلال مشاريعنا الناجحة.</p>
+            <a style="margin: 20px auto;width: 40%;" href="" class="Read_More_3 Read_More_2 Read_Pro"> <img src="assets/images/Vector.png" alt="">   زيارة المشروع </a>
+        </div>
+    </section>
+
+
+    <section class="Image_Protofolio">
+        <div class="Image_Protofolio_Content">
+            <img src="assets/images/home.png" alt="">
+        </div>
+    </section>
+
+
+     <section class="zigzag-sec">
+ 
+  <!-- Header -->
+  <div class="zigzag-sec__header">
+    <h2 class="zigzag-sec__title">خطوات العمل على المشروع</h2>
+    <p class="zigzag-sec__subtitle">من الفكرة للتسليم — 4 مراحل واضحة</p>
+  </div>
+ 
+  <div class="zigzag-track">
+ 
+    <!-- Step 1 — Card Right / Icon Left -->
+    <div class="zz-row">
+      <div class="zz-card">
+        <span class="zz-card__step">المرحلة الأولى</span>
+        <h3 class="zz-card__title">الفهم والتحليل</h3>
+        <p class="zz-card__desc">نجلس معك لفهم أهداف المشروع، الجمهور المستهدف، والمتطلبات الكاملة — ونخرج بخطة واضحة ومتفق عليها.</p>
+        <span class="zz-card__duration">⏱ 2 – 3 أيام</span>
+      </div>
+      <div class="zz-center">
+        <div class="zz-center__line-top"></div>
+        <div class="zz-center__num">1</div>
+        <div class="zz-center__line-bottom"></div>
+      </div>
+      <div class="zz-icon-side">
+        
+      </div>
+    </div>
+ 
+    <!-- Step 2 — Card Left / Icon Right (even) -->
+    <div class="zz-row zz-row--even">
+      <div class="zz-card">
+        <span class="zz-card__step">المرحلة الثانية</span>
+        <h3 class="zz-card__title">التصميم والواجهات</h3>
+        <p class="zz-card__desc">نصمم واجهات UI/UX تعكس هوية علامتك التجارية، مع مراجعتك وتعديل التصميم حتى يصل للشكل المثالي.</p>
+        <span class="zz-card__duration">⏱ 5 – 7 أيام</span>
+      </div>
+      <div class="zz-center">
+        <div class="zz-center__line-top"></div>
+        <div class="zz-center__num">2</div>
+        <div class="zz-center__line-bottom"></div>
+      </div>
+      <div class="zz-icon-side">
+        
+      </div>
+    </div>
+ 
+    <!-- Step 3 — Card Right / Icon Left -->
+    <div class="zz-row">
+      <div class="zz-card">
+        <span class="zz-card__step">المرحلة الثالثة</span>
+        <h3 class="zz-card__title">البرمجة والتطوير</h3>
+        <p class="zz-card__desc">نبرمج الموقع بأحدث التقنيات مع ضمان السرعة، الأمان، والتوافق مع جميع الأجهزة والمتصفحات.</p>
+        <span class="zz-card__duration">⏱ 10 – 15 يوم</span>
+      </div>
+      <div class="zz-center">
+        <div class="zz-center__line-top"></div>
+        <div class="zz-center__num">3</div>
+        <div class="zz-center__line-bottom"></div>
+      </div>
+      <div class="zz-icon-side">
+        
+      </div>
+    </div>
+ 
+    <!-- Step 4 — Card Left / Icon Right (even) -->
+    <div class="zz-row zz-row--even">
+      <div class="zz-card">
+        <span class="zz-card__step">المرحلة الرابعة</span>
+        <h3 class="zz-card__title">الإطلاق والدعم</h3>
+        <p class="zz-card__desc">نختبر كل شيء، نطلق الموقع رسمياً، ونسلّمك لوحة التحكم مع دعم فني مستمر لضمان استمرارية العمل.</p>
+        <span class="zz-card__duration">⏱ 2 – 3 أيام</span>
+      </div>
+      <div class="zz-center">
+        <div class="zz-center__line-top"></div>
+        <div class="zz-center__num">4</div>
+        <div class="zz-center__line-bottom"></div>
+      </div>
+      <div class="zz-icon-side">
+        
+      </div>
+    </div>
+ 
+  </div>
+</section>
+
+    <h2 class="title"> صور من المشروع </h2>
+    <p class="sub_title"> بعض من صور المشروع </p>
+<!-- STAGE -->
+<div class="devices-stage">
+
+  <!-- DESKTOP -->
+  <div class="device-desktop">
+    <div class="desktop-body">
+      <div class="desktop-camera"></div>
+      <div class="desktop-screen" id="screen-desktop">
+        <!-- ═══ أضف صورك هنا ═══ -->
+        <img class="slide-img active" src="assets/images/Portofolio/fan.png" alt="موقع 1">
+        <img class="slide-img"        src="assets/images/Portofolio/int.png" alt="موقع 2">
+        <img class="slide-img"        src="assets/images/Portofolio/hoj.png" alt="موقع 3">
+        <img class="slide-img"        src="assets/images/Portofolio/sam1.png" alt="موقع 4">
+        <img class="slide-img"        src="assets/images/Portofolio/sam2.png" alt="موقع 4">
+      </div>
+    </div>
+    <div class="desktop-stand"></div>
+    <div class="desktop-base"></div>
+  </div>
+ 
+  <!-- LAPTOP -->
+  <div class="device-laptop">
+    <div class="laptop-lid">
+      <div class="laptop-camera"></div>
+      <div class="laptop-screen" id="screen-laptop">
+        <!-- ═══ أضف صورك هنا ═══ -->
+         <img class="slide-img active" src="assets/images/Portofolio/fan.png" alt="موقع 1">
+        <img class="slide-img"        src="assets/images/Portofolio/int.png" alt="موقع 2">
+        <img class="slide-img"        src="assets/images/Portofolio/hoj.png" alt="موقع 3">
+        <img class="slide-img"        src="assets/images/Portofolio/sam1.png" alt="موقع 4">
+        <img class="slide-img"        src="assets/images/Portofolio/sam2.png" alt="موقع 4">
+      </div>
+    </div>
+    <div class="laptop-hinge"></div>
+    <div class="laptop-base"></div>
+  </div>
+ 
+  <!-- TABLET -->
+  <div class="device-tablet">
+    <div class="tablet-body">
+      <div class="tablet-screen" id="screen-tablet">
+        <!-- ═══ أضف صورك هنا ═══ -->
+         <img class="slide-img active" src="assets/images/Portofolio/fan.png" alt="موقع 1">
+        <img class="slide-img"        src="assets/images/Portofolio/int.png" alt="موقع 2">
+        <img class="slide-img"        src="assets/images/Portofolio/hoj.png" alt="موقع 3">
+        <img class="slide-img"        src="assets/images/Portofolio/sam1.png" alt="موقع 4">
+        <img class="slide-img"        src="assets/images/Portofolio/sam2.png" alt="موقع 4">
+      </div>
+      <div class="tablet-btn"></div>
+    </div>
+  </div>
+ 
+  <!-- PHONE -->
+  <div class="device-phone">
+    <div class="phone-body">
+      <div class="phone-notch"></div>
+      <div class="phone-screen" id="screen-phone">
+        <!-- ═══ أضف صورك هنا ═══ -->
+         <img class="slide-img active" src="assets/images/Portofolio/fan.png" alt="موقع 1">
+        <img class="slide-img"        src="assets/images/Portofolio/int.png" alt="موقع 2">
+        <img class="slide-img"        src="assets/images/Portofolio/hoj.png" alt="موقع 3">
+        <img class="slide-img"        src="assets/images/Portofolio/sam1.png" alt="موقع 4">
+        <img class="slide-img"        src="assets/images/Portofolio/sam2.png" alt="موقع 4">
+      </div>
+      <div class="phone-btn"></div>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- CONTROLS -->
+<div class="slider-controls">
+ 
+  <div style="display:flex; align-items:center; gap:12px; width:100%;">
+    <button class="s-btn" id="prevBtn">‹</button>
+    <div class="slider-track-wrap" style="flex:1;">
+      <div class="slider-track"><div class="slider-fill" id="sliderFill"></div></div>
+      <input type="range" class="main-slider" id="mainSlider" min="0" value="0">
+    </div>
+    <button class="s-btn" id="nextBtn">›</button>
+  </div>
+ 
+  <div class="slider-dots" id="dotsWrap"></div>
+ 
+  <span class="slide-counter" id="counter">1 / 5</span>
+ 
+</div>
+
+
+<!-- ══ CIRCLE REVEAL OVERLAY ══ -->
+  <nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <ul class="nav-list" role="list">
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+        
+          الرئيسية
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="about_us.html">
+         
+          من نحن
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="services.html">
+          
+          خدماتنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="projects.html">
+          
+          أعمالنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="baka.html">
+       
+            الباقات  
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+      <li class="nav-item">
+        <a class="nav-link" href="Blog.html">
+           المدونة
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="contact_us.html">
+          تواصل معنا
+          <span class="nav-arrow">‹</span>
+        </a>
+      </li>
+ 
+    </ul>
+  </nav>
+    
+<footer class="ft-wrap">
+  <div class="ft-top">
+
+    <div class="ft-logo-col">
+      <div class="ft-logo">
+        <img src="assets/images/footer_logo.png" alt="Be Cloud Logo">
+      </div>
+    </div>
+
+     <div>
+      <div class="ft-nav-title">من نحن</div>
+      <a class="ft-nav-link" href="#">من نحن</a>
+      <a class="ft-nav-link" href="#">المدونة</a>
+      <a class="ft-nav-link" href="#">تواصل معنا</a>
+    </div>
+
+
+     <div>
+      <div class="ft-nav-title">الرئيسية</div>
+      <a class="ft-nav-link" href="#">الرئيسية</a>
+      <a class="ft-nav-link" href="#">خدماتنا</a>
+      <a class="ft-nav-link" href="#">سابقة اعمالنا</a>
+    </div>
+
+
+    <div class="ft-logo-col">
+      <p class="ft-desc">علامتك التجارية مش بس هتطور، لكنها هتوصل للعميل الصح في الوقت الصح، بخطط تسويقية مدروسة تحقق أفضل النتائج.</p>
+      <div class="ft-socials">
+        <a class="ft-social" href="#" aria-label="X"><img src="assets/images/Footer/6.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="TikTok"><img src="assets/images/Footer/5.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="YouTube"><img src="assets/images/Footer/4.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Instagram"><img src="assets/images/Footer/3.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Facebook"><img src="assets/images/Footer/2.png" alt=""></a>
+        <a class="ft-social" href="#" aria-label="Snapchat"><img src="assets/images/Footer/1.png" alt=""></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ft-bottom">
+    
+    <div class="ft-contact-items">
+      <div style="background-color: #fff;color:#000" class="ft-contact-pill">
+        <img src="assets/images/Footer/Email.png" alt="">
+        <span>info@beloud.com  </span>
+      </div>
+       <div class="ft-contact-pill">
+        <img src="assets/images/Footer/telephone (1).png" alt="">
+        <span>+ 000000000000 </span>
+      </div>
+      <div class="ft-contact-pill">
+        <img src="assets/images/Footer/Location.png" alt="">
+        <span>دولة - محافظة - شارع  </span>
+      </div>
+     
+      
+    </div>
+    <span class="ft-copy">copyright@becloud2025</span>
+  </div>
+</footer>
+
+
+
+<!-- ######################## Scripts #########################  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+
+<script>
+  // ═══════════════════════════════════════════════════
+  // الـ JS بيتحكم في active class بس
+  // الصور موجودة في الـ HTML فوق
+  // ═══════════════════════════════════════════════════
+ 
+  const screens = [
+    document.getElementById('screen-desktop'),
+    document.getElementById('screen-laptop'),
+    document.getElementById('screen-tablet'),
+    document.getElementById('screen-phone'),
+  ];
+ 
+  // عدد الصور — غيّره لو زدت أو نقصت صور
+  const TOTAL = 4;
+ 
+  let current = 0;
+  let autoTimer;
+ 
+  function goTo(index) {
+    current = (index + TOTAL) % TOTAL;
+ 
+    // تحديث active class في كل الشاشات
+    screens.forEach(screen => {
+      screen.querySelectorAll('.slide-img').forEach((img, i) => {
+        img.classList.toggle('active', i === current);
+      });
+    });
+ 
+    updateUI();
+  }
+ 
+  function updateUI() {
+    // counter
+    document.getElementById('counter').textContent = `${current + 1} / ${TOTAL}`;
+ 
+    // slider
+    const slider = document.getElementById('mainSlider');
+    slider.max = TOTAL - 1;
+    slider.value = current;
+ 
+    // fill bar
+    document.getElementById('sliderFill').style.width =
+      TOTAL > 1 ? `${(current / (TOTAL - 1)) * 100}%` : '100%';
+ 
+    // dots
+    const dotsWrap = document.getElementById('dotsWrap');
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < TOTAL; i++) {
+      const d = document.createElement('div');
+      d.className = 's-dot' + (i === current ? ' active' : '');
+      d.onclick = () => { resetAuto(); goTo(i); };
+      dotsWrap.appendChild(d);
+    }
+  }
+ 
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+ 
+  // Events
+  document.getElementById('mainSlider').addEventListener('input', e => {
+    resetAuto();
+    goTo(+e.target.value);
+  });
+ 
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    resetAuto();
+    goTo(current - 1);
+  });
+ 
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    resetAuto();
+    goTo(current + 1);
+  });
+ 
+  // Init
+  updateUI();
+  autoTimer = setInterval(() => goTo(current + 1), 4000);
+</script>
+
+ <script>
+    const toggle   = document.getElementById('menuToggle');
+    const overlay  = document.getElementById('navOverlay');
+    let isOpen     = false;
+ 
+    /* ── حساب مركز الزرار بالنسبة للـ viewport ── */
+    function updateOrigin() {
+      const rect = toggle.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      overlay.style.setProperty('--cx', cx + 'px');
+      overlay.style.setProperty('--cy', cy + 'px');
+    }
+ 
+    /* ── فتح / إغلاق ── */
+    function openMenu() {
+      updateOrigin();
+      isOpen = true;
+      toggle.classList.add('is-open');
+      overlay.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      overlay.setAttribute('aria-hidden',  'false');
+      document.body.style.overflow = 'hidden';   /* منع scroll الخلفية */
+    }
+ 
+    function closeMenu() {
+      isOpen = false;
+      toggle.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      overlay.setAttribute('aria-hidden',  'true');
+      document.body.style.overflow = '';
+    }
+ 
+    toggle.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+ 
+    /* ── ESC للإغلاق ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && isOpen) closeMenu();
+    });
+ 
+    /* ── لو حجم الشاشة اتغير → حدّث المركز ── */
+    window.addEventListener('resize', () => {
+      if (isOpen) updateOrigin();
+    });
+ 
+    /* ── اضغط خارج القائمة للإغلاق ── */
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeMenu();
+    });
+  </script>
+  
+</body>
+</html>
