@@ -3231,6 +3231,7 @@ canvas#tw-bg {
     left: 0;
     width: 100%;
     display: block;
+    overflow: hidden;
   }
 
   .Header_Mobile .Header_Mobile_Data{
